@@ -1,0 +1,50 @@
+Here’s a **simple explanation in easy English** for *Reading 1.4: Interacting with AWS*:
+
+---
+
+### 💡 What does "Interacting with AWS" mean?
+
+When you use AWS to do anything (like create a server or upload a file), it sends a **command** called an **API call**. This command must be **checked** (authenticated and authorized) to make sure you’re allowed to do it.
+
+---
+
+### 🖥️ 1. AWS Management Console
+
+* This is a **website** where you can **click buttons** to use AWS services.
+* It's the **easiest way** for beginners to start.
+* You can choose different **Regions** (places like US, Europe, etc.) where your AWS services will run.
+* The page changes depending on which Region you select.
+
+---
+
+### 💻 2. AWS Command Line Interface (CLI)
+
+* This is a **text-based tool** you use in the terminal or command prompt.
+* You can **type commands** to do things like create servers or get data.
+* It helps **automate tasks** like collecting data every day without using the website.
+* Example: A script can run a command daily to list all servers.
+
+---
+
+### 👨‍💻 3. AWS Software Development Kits (SDKs)
+
+* SDKs let you write **code in programming languages** (like Python or Java) to work with AWS.
+* For example, if you write a program in Python, you can use the **AWS SDK for Python (called boto3)** to upload a photo to AWS.
+
+```python
+import boto3
+
+ec2 = boto3.client('ec2')       # Connect to EC2 (virtual servers)
+response = ec2.describe_instances()  # Get information about servers
+print(response)
+```
+
+---
+
+### Summary:
+
+| Tool        | Use it by...          | Best for...                    |
+| ----------- | --------------------- | ------------------------------ |
+| AWS Console | Clicking in a browser | Beginners and simple actions   |
+| AWS CLI     | Typing commands       | Automating tasks and scripting |
+| AWS SDKs    | Writing code          | Developers using AWS in apps   |
