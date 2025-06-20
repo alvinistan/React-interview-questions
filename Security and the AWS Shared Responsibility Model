@@ -1,0 +1,75 @@
+Here’s a **simple English explanation** of **Reading 1.5: Security and the AWS Shared Responsibility Model**:
+
+---
+
+### 🔐 What is the Shared Responsibility Model?
+
+When you use AWS Cloud, **security is a team effort**:
+
+* **AWS handles some parts**.
+* **You handle other parts**.
+
+This is called the **Shared Responsibility Model**, where:
+
+* **AWS** is responsible for **security *of* the cloud**.
+* **You** (the customer) are responsible for **security *in* the cloud**.
+
+---
+
+### ✅ What is **AWS responsible for**?
+
+**AWS secures the physical and technical parts** of the cloud, like:
+
+* Buildings and data centers (physical security).
+* Hardware, servers, storage, and networking.
+* Core software systems (like host OS and virtualization).
+
+AWS responsibility depends on the service type:
+
+| **Category**        | **Example** | **AWS Handles**                              |
+| ------------------- | ----------- | -------------------------------------------- |
+| Infrastructure      | EC2         | Physical servers, networking, virtualization |
+| Container services  | RDS         | + Operating system and platform              |
+| Abstracted services | S3          | + Data encryption and protection             |
+
+---
+
+### 🧑‍💻 What are **you (the customer) responsible for**?
+
+You are in charge of:
+
+* Configuring services properly
+* Protecting your data
+* Managing who has access to what
+
+Your responsibility also depends on the service type:
+
+| **Category**        | **You Handle**                                   |
+| ------------------- | ------------------------------------------------ |
+| Infrastructure      | OS, apps, encryption, data security              |
+| Container services  | Data encryption, firewall rules, backups         |
+| Abstracted services | Managing your data, using client-side encryption |
+
+---
+
+### 📌 Examples of your responsibilities:
+
+* Pick the **right Region** for legal/data privacy rules.
+* Turn on **encryption and backups**.
+* Use **access control** to limit who can access your AWS resources.
+
+---
+
+### 🔁 Summary
+
+| **Responsibility**      | **AWS**                                             | **You (Customer)**                                 |
+| ----------------------- | --------------------------------------------------- | -------------------------------------------------- |
+| Security *of* the cloud | Data centers, hardware, core infrastructure         | ❌                                                  |
+| Security *in* the cloud | ❌                                                   | Data protection, access, configuration             |
+| Infrastructure Services | Infra setup                                         | OS, apps, encryption                               |
+| Container Services      | Infra + OS + platform                               | Your data, firewalls, backups                      |
+| Abstracted Services     | Almost everything (infra, OS, platform, encryption) | Your data, access controls, client-side encryption |
+
+---
+
+This model helps clearly define **who is responsible for what** when using AWS.
