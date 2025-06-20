@@ -1,0 +1,57 @@
+Here are **interview-style answers** to React questions 11–14. These are structured to be **concise, technical, and easy to speak during an interview**:
+
+---
+
+### **Q11. What is the Virtual DOM?**
+
+**Answer:**
+The Virtual DOM is a lightweight copy of the real DOM that React uses to optimize UI rendering. When the state or props of a component change, React updates the virtual DOM first, compares it with the previous version (using a process called "diffing"), and then updates only the parts of the real DOM that actually changed. This improves performance and makes React applications faster.
+
+---
+
+### **Q12. What are React lifecycle methods?**
+
+**Answer:**
+Lifecycle methods are special functions in class components that allow you to run code at specific points in a component’s life — such as when it's created, updated, or destroyed.
+
+**Key lifecycle methods:**
+
+* `componentDidMount()` – Runs after the component is rendered to the DOM.
+* `componentDidUpdate()` – Runs after the component updates due to state or props change.
+* `componentWillUnmount()` – Runs before the component is removed from the DOM.
+
+In functional components, these lifecycle effects are handled using the `useEffect` hook.
+
+---
+
+### **Q13. Explain the `useState` and `useEffect` hooks.**
+
+**Answer:**
+
+* `useState` is a React hook that lets you add and manage state in functional components.
+  **Example:**
+
+  ```js
+  const [count, setCount] = useState(0);
+  ```
+
+* `useEffect` lets you run side effects like fetching data, setting up subscriptions, or updating the DOM. It replaces lifecycle methods like `componentDidMount` and `componentDidUpdate`.
+  **Example:**
+
+  ```js
+  useEffect(() => {
+    console.log('Component mounted or updated');
+  }, []);
+  ```
+
+---
+
+### **Q14. What is props drilling in React?**
+
+**Answer:**
+Props drilling refers to the process of passing data from a top-level component to deeply nested components through intermediate components, even if those intermediate components don't need the data themselves. It can make the code hard to manage.
+**Solution:** We can avoid props drilling using context API or state management libraries like Redux.
+
+---
+
+Would you like more advanced questions next (like React Context, Redux, useRef, memo, etc.) or a quiz to test yourself on these 14 questions?
