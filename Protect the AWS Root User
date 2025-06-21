@@ -1,0 +1,63 @@
+Here are **short notes** for **Reading 1.6: Protect the AWS Root User** in **simple English**:
+
+---
+
+### 🔐 **1. Authentication vs Authorization**
+
+* **Authentication**: Confirms **who you are** (e.g., login with email + password).
+* **Authorization**: Confirms **what you can do** (e.g., read/write/delete resources).
+
+---
+
+### 👑 **2. What is the AWS Root User?**
+
+* The **first user** created when setting up an AWS account.
+* Has **full access** to all AWS services and billing info.
+* **Very powerful** – should be used carefully and rarely.
+
+---
+
+### 🔑 **3. Root User Credentials**
+
+* **Login access**: Email + password
+* **Programmatic access**: Access key ID + secret access key
+* Treat access keys like a password — **keep them private and secure**.
+
+---
+
+### ✅ **4. Best Practices for Root User**
+
+* Use **strong password**.
+* **Do not share** password or access keys.
+* **Disable/delete** root access keys.
+* Use root user **only for specific tasks** (like account setup, billing).
+* **Enable MFA** (Multi-Factor Authentication) for better protection.
+
+---
+
+### 🔐 **5. Multi-Factor Authentication (MFA)**
+
+* Adds an extra layer of security.
+* Combines:
+
+  * **Something you know** (password)
+  * **Something you have** (one-time code or security device)
+* Helps prevent account hacking even if the password is stolen.
+
+---
+
+### 🔧 **6. Types of MFA Devices Supported by AWS**
+
+| Type             | Description                            | Examples                  |
+| ---------------- | -------------------------------------- | ------------------------- |
+| **Virtual MFA**  | App on phone that gives a code         | Google Authenticator, Duo |
+| **Hardware MFA** | Physical key fob with 6-digit code     | Key fob, display card     |
+| **U2F Device**   | USB security key plugged into computer | YubiKey                   |
+
+---
+
+### 📌 **Summary**
+
+* **Root user = powerful = protect it carefully**
+* Always use **MFA**, **strong passwords**, and avoid using the root user for daily tasks.
+* **Security starts with authentication + authorization** – know who can access what.
