@@ -1,0 +1,157 @@
+Here are **detailed yet simple notes** for **Reading 1.7: Introduction to AWS Identity and Access Management (IAM)** — covering **all important points** clearly:
+
+---
+
+## 🔐 What is IAM (Identity and Access Management)?
+
+* IAM is a **web service** provided by AWS to **control who can access your AWS account** and **what they can do**.
+* IAM helps with:
+
+  * **Authentication** – Proves who you are (like logging in with a username and password).
+  * **Authorization** – Grants permissions (like who can access which AWS services or resources).
+* **You don't need to share your AWS root account** with others. Instead, use IAM to create users and assign access.
+
+---
+
+## 💡 Why Use IAM?
+
+* Allows **secure sharing of AWS resources**.
+* Offers **fine-grained permissions** – you can control who can access what.
+* Helps avoid **credential sharing**.
+* **Free** – IAM is provided at no extra cost.
+
+---
+
+## 🌍 IAM Global Scope
+
+* IAM is **global**, not region-specific.
+* You can access IAM settings from **any AWS Region**.
+
+---
+
+## 🔧 IAM Features
+
+| Feature                               | Description                                                                               |
+| ------------------------------------- | ----------------------------------------------------------------------------------------- |
+| **MFA (Multi-Factor Authentication)** | Adds extra security using OTP codes.                                                      |
+| **Password Policies**                 | Set rules like password length, complexity, rotation, etc.                                |
+| **Federation Support**                | Users from external sources (e.g., Google, corporate network) can access AWS temporarily. |
+| **Free to Use**                       | No extra cost for using IAM.                                                              |
+| **Integrated with AWS**               | Works with most AWS services automatically.                                               |
+
+---
+
+## 👤 IAM User
+
+* An **IAM user** is a person or application that **interacts with AWS services**.
+* Each user has:
+
+  * A **username**
+  * **Login credentials** (password for console access, access keys for CLI/API)
+* You can give **programmatic access** or **AWS Console access**, or both.
+
+---
+
+## 📂 IAM Group
+
+* A group is a **collection of IAM users**.
+* All users in the group **share the same permissions**.
+* Easier to manage when many users need the **same level of access**.
+* **Best Practice**: Use groups instead of assigning permissions to each user one by one.
+
+### ✅ Benefits of Using Groups:
+
+* **New user?** Just add to the right group.
+* **Job role changed?** Move user to another group.
+* **Better visibility** and **simpler management**.
+
+### 💡 Group Notes:
+
+* Groups can have **many users**.
+* Users can belong to **multiple groups**.
+* **Groups cannot belong to other groups.**
+
+---
+
+## 🛑 AWS Root User
+
+* The root user has **full access** to all AWS resources.
+* **Never use the root user** for everyday tasks.
+* Protect it with **MFA** and keep it secure.
+
+---
+
+## 🧾 IAM Policy
+
+* IAM Policies define **what actions are allowed or denied** on AWS resources.
+* Policies are written in **JSON format**.
+* You attach policies to:
+
+  * IAM **Users**
+  * IAM **Groups**
+  * IAM **Roles**
+
+---
+
+### 🧱 IAM Policy Structure
+
+| Element    | Description                                 | Required | Example                                |
+| ---------- | ------------------------------------------- | -------- | -------------------------------------- |
+| `Effect`   | Allow or Deny                               | ✔        | `"Effect": "Allow"`                    |
+| `Action`   | List of operations the policy allows/denies | ✔        | `"Action": "s3:ListBucket"`            |
+| `Resource` | What AWS resource is affected               | ✔        | `"Resource": "arn:aws:s3:::my-bucket"` |
+
+---
+
+## 🧪 Example Policies
+
+### 1. **Administrator Policy** (Full Access)
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [{
+    "Effect": "Allow",
+    "Action": "*",
+    "Resource": "*"
+  }]
+}
+```
+
+* Grants **all actions** on **all resources**.
+
+---
+
+### 2. **Self-Access Policy** (Limited to the user's own account)
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [{
+    "Effect": "Allow",
+    "Action": [
+      "iam:ChangePassword",
+      "iam:GetUser"
+    ],
+    "Resource": "arn:aws:iam::123456789012:user/${aws:username}"
+  }]
+}
+```
+
+* Allows the user to **change their own password** and **view their own account info**.
+* Uses **`${aws:username}`** to apply it only to the logged-in user.
+
+---
+
+## ✅ Best Practices Summary
+
+| Tip                                                                 | Why It Matters                  |
+| ------------------------------------------------------------------- | ------------------------------- |
+| Use IAM groups instead of assigning permissions to individual users | Easier to manage and scale      |
+| Apply the least privilege principle                                 | Give only necessary permissions |
+| Enable MFA for root and IAM users                                   | Increases security              |
+| Rotate access keys regularly                                        | Avoid long-term key exposure    |
+| Use roles for applications and external access                      | More secure than sharing keys   |
+
+---
+
